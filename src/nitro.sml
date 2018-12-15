@@ -13,6 +13,7 @@ fun panel attrs body = MkElem { tag = "div", attrs = attrs, body = body }
 
 fun id v : attr = StrAtt ("id", v)
 fun class v : attr = ListAtt ("class", v)
+fun text s = Liter s
 
 fun intercalate _ nil = nil
   | intercalate _ (h::nil) = h::nil
@@ -33,8 +34,13 @@ fun render (MkElem{tag,attrs,body}) =
 
 end
 
-structure Main = struct
+structure Test = struct
 
-fun main(p,a) = 0
+fun main(p,a) =
+    let open Nitro
+        val elem = panel [class ["foo", "bar"], id "foo"] [text "div body"]
+    in print (render elem); print "\n"; 0 end
 
 end
+
+val _ = Test.main("test",[])

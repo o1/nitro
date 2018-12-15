@@ -1,2 +1,5 @@
 Group is
-    src/nitro.sml
+        $cml/basis.cm
+        $cml/cml.cm
+        $cml-lib/smlnj-lib.cm
+        src/nitro.sml
