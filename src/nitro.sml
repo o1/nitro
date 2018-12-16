@@ -10,7 +10,8 @@ and elem = MkElem of {tag : string, attrs : attr list}
          | Liter of string
 
 (*elements*)
-fun panel attrs = MkElem {tag = "div", attrs = attrs}
+nonfix div;
+fun div attrs = MkElem {tag = "div", attrs = attrs}
 fun text s = Liter s
 (*attributes*)
 fun id v = StrAttr ("id", v)
@@ -49,7 +50,8 @@ structure Test = struct
 
 fun main(p,a) =
     let open Nitro
-        val elem = panel [class ["foo", "bar"], id "foo", body [text "div body"]]
+        nonfix div
+        val elem = div [class ["foo", "bar"], id "foo", body [text "div body"]]
     in print (render elem); print "\n"; 0 end
 
 end
