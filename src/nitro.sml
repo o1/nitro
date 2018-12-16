@@ -52,7 +52,10 @@ fun main(p,a) =
     let open Nitro
         nonfix div
         val elem = div [class ["foo", "bar"], id "foo", body [text "div body"]]
-    in print (render elem); print "\n"; 0 end
+        val expected = "<div class=\"foo bar\" id=\"foo\">div body</div>"
+        val actual = render elem
+    in if actual = expected then 0 else
+       raise Fail ("\nExpected: " ^ expected ^ "\n  Actual: " ^ actual ^ "\n") end
 
 end
 
