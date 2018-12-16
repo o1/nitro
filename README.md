@@ -12,7 +12,7 @@ structure Test = struct
 
 fun main(p,a) =
     let open Nitro
-        val elem = panel [class ["foo", "bar"], id "foo", body [text "div body"]]
+        val elem = div [class ["foo", "bar"], id "foo", body [text "div body"]]
     in print (render elem); print "\n"; 0 end
 
 end
